@@ -479,47 +479,49 @@
 
         /* Responsive Design */
         @media (min-width: 768px) {
-            .profile-card {
-                margin: 40px auto 60px;
-                padding: 60px 40px;
-            }
-            
-            .profile-image {
-                width: 180px;
-                height: 180px;
-                font-size: 80px;
-            }
-            
-            .profile-info h1 {
-                font-size: 2.8rem;
-            }
-            
-            .profile-info h2 {
-                font-size: 1.6rem;
-            }
-            
-            main {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .projects-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+    .profile-card {
+        margin: 40px auto 60px;
+        padding: 60px 40px;
+    }
 
-        @media (min-width: 992px) {
-            main {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .skills-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .project-card:nth-child(3) {
-                grid-column: span 2;
-            }
-        }
+    .profile-image {
+        width: 180px;
+        height: 180px;
+        font-size: 80px;
+    }
+
+    .profile-info h1 {
+        font-size: 2.8rem;
+    }
+
+    .profile-info h2 {
+        font-size: 1.6rem;
+    }
+
+    /* REMOVE this to keep single-column layout */
+    /* main {
+        grid-template-columns: repeat(2, 1fr);
+    } */
+
+    .projects-grid {
+        grid-template-columns: 1fr; /* force full-width projects */
+    }
+}
+
+@media (min-width: 992px) {
+    /* REMOVE this */
+    /* main {
+        grid-template-columns: repeat(3, 1fr);
+    } */
+
+    .skills-container {
+        grid-template-columns: 1fr; /* single column */
+    }
+
+    .project-card:nth-child(3) {
+        grid-column: auto; /* cancel manual span */
+    }
+}
     </style>
 </head>
 <body>
