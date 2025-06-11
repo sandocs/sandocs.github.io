@@ -520,6 +520,65 @@
                 grid-column: span 2;
             }
         }
+/*-- General Desktop Styles --*/
+
+/* Apply these styles for screens 768px and wider */
+@media (min-width: 768px) {
+
+  body {
+    /* Increase the base font size for better readability on larger screens */
+    font-size: 18px; 
+  }
+
+  .container {
+    /* Widen the main container to use more of the screen space */
+    max-width: 1140px;
+    margin: 0 auto; /* Center the container */
+    padding: 0 2rem; /* Add some padding on the sides */
+  }
+
+  /*-- Header and Navigation --*/
+  
+  header {
+    /* Ensure the header content is aligned */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav ul {
+    /* Display navigation links in a row */
+    display: flex;
+    gap: 2rem; /* Add space between navigation items */
+  }
+
+  /*-- Main Content Layout --*/
+
+  main {
+    /* Create a two-column layout for the main content and sidebar */
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Main content takes 3/4 of the space, sidebar takes 1/4 */
+    gap: 2rem; /* Add space between the columns */
+  }
+
+  /*-- Section and Article Adjustments --*/
+
+  section, article {
+    /* Adjust padding for a more spacious feel */
+    padding: 2rem 0;
+  }
+  
+  /*-- Footer --*/
+  
+  footer .footer-content {
+    /* Arrange footer content in a row */
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+}
+
     </style>
 </head>
 <body>
