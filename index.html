@@ -3,21 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sandeep Kumar — Profile</title>
+    <title>Alex Morgan | Computer Science Student</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --secondary: #7209b7;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --light-gray: #e2e8f0;
-            --border-radius: 16px;
-            --shadow: 0 8px 20px rgba(0,0,0,0.1);
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
             --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
         }
 
         * {
@@ -27,748 +26,1138 @@
         }
 
         body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--dark);
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
+            color: var(--dark);
+            background-color: var(--light);
+            scroll-behavior: smooth;
         }
 
         .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 15px;
         }
 
-        /* Profile Card Styles */
-        .profile-card {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
             color: white;
-            padding: 40px;
-            margin: 20px auto 40px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
             position: relative;
             overflow: hidden;
-            max-width: 900px;
         }
 
-        .profile-card::before {
+        .hero::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
-            transform: rotate(25deg);
-            pointer-events: none;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            z-index: 0;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .profile-container {
             position: relative;
-            z-index: 2;
+            width: 220px;
+            height: 220px;
+            margin-bottom: 2.5rem;
         }
 
-        .profile-image {
-            width: 150px;
-            height: 150px;
+        .profile-gradient {
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: linear-gradient(135deg, #3498db, #8e44ad, #e74c3c);
             border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            margin: 0 auto 25px;
-            overflow: hidden;
+            z-index: 0;
+            animation: gradientRotate 8s linear infinite;
+        }
+
+        @keyframes gradientRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-img {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 1;
+            border: 3px solid white;
             box-shadow: var(--shadow);
-            background: linear-gradient(45deg, #5e72e4, #825ee4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 70px;
-            color: rgba(255, 255, 255, 0.9);
         }
 
-        .profile-info h1 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 2.0rem;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            animation: fadeIn 1s ease-out;
         }
 
-        .profile-info h2 {
+        .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
             font-weight: 400;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 1.4s ease-out;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
             font-size: 1.1rem;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
-
-        .profile-info p {
-            max-width: 600px;
-            margin: 0 auto 25px;
-            font-size: 0.8rem;
-            opacity: 0.9;
-            line-height: 1.7;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-top: 15px;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.6rem;
-            transition: var(--transition);
-            opacity: 0.8;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
             backdrop-filter: blur(5px);
-            text-decoration: none;
-        }
-
-        .social-links a:hover {
-            opacity: 1;
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Main Content */
-        main {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        .section {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 30px;
             transition: var(--transition);
         }
 
-        .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
         }
 
-        .section-header {
+        .social-icons {
             display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid var(--light-gray);
+            gap: 1.5rem;
+            margin-top: 1rem;
+            animation: fadeIn 1.6s ease-out;
         }
 
-        .section-header i {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-right: 15px;
-            background: rgba(67, 97, 238, 0.1);
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
         }
 
-        .section-header h2 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.6rem;
-            color: var(--dark);
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 100;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .dot::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .dot:hover, .dot.active {
+            background-color: var(--secondary);
+            transform: scale(1.3);
+        }
+
+        .dot:hover::after, .dot.active::after {
+            opacity: 1;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
         }
 
         /* About Section */
-        .about-content p {
-            margin-bottom: 15px;
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
             color: var(--gray);
-            line-height: 1.7;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .skill-tag {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-3px);
+        }
+
+        .hobbies {
+            margin-top: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
         }
 
         /* Education Section */
+        .education-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
         .education-item {
-            display: flex;
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid var(--light-gray);
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
-        .education-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
         }
 
-        .education-icon {
-            min-width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(67, 97, 238, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            color: var(--primary);
-            font-size: 1.2rem;
+        .education-item:hover {
+            transform: translateY(-5px);
         }
 
-        .education-details h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-            color: var(--dark);
+        .education-item h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
         }
 
-        .education-details .date {
-            color: var(--primary);
-            font-weight: 500;
-            font-size: 0.95rem;
-            margin-bottom: 8px;
-            display: inline-block;
-            background: rgba(67, 97, 238, 0.1);
-            padding: 3px 10px;
-            border-radius: 20px;
+        .education-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
 
-        .education-details p {
+        .course-list {
+            margin-top: 1rem;
+        }
+
+        .course-list li {
+            margin-bottom: 0.5rem;
             color: var(--gray);
-            font-size: 0.95rem;
-            line-height: 1.7;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .course-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
         }
 
         /* Skills Section */
         .skills-container {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 15px;
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
         }
 
         .skill-category h3 {
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            color: var(--dark);
-            display: flex;
-            align-items: center;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-align: center;
         }
 
-        .skill-category h3 i {
-            margin-right: 10px;
-            color: var(--primary);
-        }
-
-        .skill-list {
-            list-style: none;
-            margin-bottom: 20px;
-        }
-
-        .skill-list li {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px dashed var(--light-gray);
-        }
-
-        .skill-list li:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-
-        .skill-name {
-            font-weight: 500;
-        }
-
-        .skill-level {
-            color: var(--primary);
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        /* Projects Section */
-        .projects-grid {
+        .skills-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1.5rem;
         }
 
-        .project-card {
-            border: 1px solid var(--light-gray);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            transition: var(--transition);
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
 
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0,0,0,0.1);
-        }
-
-        .project-image {
-            height: 180px;
-            background: linear-gradient(45deg, #5e72e4, #825ee4);
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--light);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .skill-item:hover .skill-icon {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-img {
+            transform: scale(1.05);
         }
 
         .project-content {
-            padding: 25px;
+            padding: 2rem;
         }
 
-        .project-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--dark);
+        .project-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
         }
 
-        .project-content p {
-            color: var(--gray);
-            font-size: 1rem;
-            margin-bottom: 20px;
-            line-height: 1.7;
-        }
-
-        .project-tags {
+        .project-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 0.5rem;
+            margin: 1rem 0;
         }
 
-        .tag {
-            background: rgba(67, 97, 238, 0.1);
-            color: var(--primary);
-            font-size: 0.85rem;
-            font-weight: 500;
-            padding: 6px 14px;
+        .tech-tag {
+            background-color: var(--light);
+            color: var(--secondary);
+            padding: 0.3rem 0.8rem;
             border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .tech-tag:hover {
+            background-color: var(--secondary);
+            color: white;
         }
 
         .project-links {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
 
         .project-links a {
+            color: var(--accent);
             text-decoration: none;
-            color: white;
-            font-weight: 500;
-            font-size: 0.95rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
-            padding: 10px 20px;
-            border-radius: 30px;
-            background: var(--primary);
+            gap: 0.5rem;
             transition: var(--transition);
         }
 
         .project-links a:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
+            color: #c0392b;
+            transform: translateX(5px);
         }
 
-        .project-links a i {
-            margin-right: 8px;
+        /* Experience Section */
+        .experience-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .experience-item {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-role {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .experience-details {
+            margin-top: 1rem;
+        }
+
+        .experience-details li {
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+            margin-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-details li::before {
+            content: '▹';
+            position: absolute;
+            left: -20px;
+            color: var(--secondary);
         }
 
         /* Contact Section */
-        .contact-info {
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-info-section {
             display: flex;
             flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .contact-icon {
-            min-width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(67, 97, 238, 0.1);
-            display: flex;
             align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: var(--primary);
-            font-size: 1.2rem;
+            text-align: center;
         }
 
-        .contact-details h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-            color: var(--dark);
-        }
-
-        .contact-details p, 
-        .contact-details a {
-            color: var(--gray);
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 1.05rem;
-        }
-
-        .contact-details a:hover {
-            color: var(--primary);
+        .contact-info-section .social-icons {
+            margin-top: 2rem;
         }
 
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: var(--primary);
             color: white;
-            padding: 40px 0;
+            padding: 2rem 0;
             text-align: center;
-            border-radius: var(--border-radius);
-            margin-top: 20px;
         }
 
-        .footer-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .footer-logo {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            color: white;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 25px 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 1.1rem;
-        }
-
-        .footer-links a:hover {
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            color: #94a3b8;
-            font-size: 1rem;
-            margin-top: 20px;
+        .section-content {
+            animation: fadeIn 0.8s ease-out;
         }
 
         /* Responsive Design */
         @media (min-width: 768px) {
-        .profile-card {
-            margin: 40px auto 60px;
-            padding: 60px 40px;
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+            
+            .tagline {
+                font-size: 1.8rem;
+            }
+            
+            .about-content,
+            .education-container,
+            .skills-container,
+            .projects-container,
+            .experience-container,
+            .contact-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .skills-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
-        .profile-image {
-            width: 180px;
-            height: 180px;
-            font-size: 80px;
+        @media (min-width: 992px) {
+            .projects-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .contact-container {
+                grid-template-columns: 2fr 1fr;
+            }
         }
-
-        .profile-info h1 {
-            font-size: 2.8rem;
-        }
-
-        .profile-info h2 {
-            font-size: 1.6rem;
-        }
-
-        .projects-grid {
-            grid-template-columns: 1fr;
-        }
-      }
-    }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Profile Card -->
-        <div class="profile-card">
-            <div class="profile-container">
-                <div class="profile-image">
-                    <i class="fas fa-user-graduate"></i>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-container">
+                    <div class="profile-gradient"></div>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Alex Morgan" class="profile-img">
                 </div>
-                <div class="profile-info">
-                    <h1>Sandeep Kumar</h1>
-                    <h2>Computer Science UG Student</h2>
-                    <p>Shershah College of Engineering<br>Sasaram, Bihar [IN]</p>
-                    <div class="social-links">
-                        <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="mailto:alex.m@example.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <h1>Alex Morgan</h1>
+                <div class="tagline">Computer Science Student | Full-Stack Developer | AI Enthusiast</div>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i> alex.morgan@example.com
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i> San Francisco, CA
+                    </div>
+                </div>
+                
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Navigation Dots -->
+        <div class="nav-dots">
+            <div class="dot active" data-section="home"></div>
+            <div class="dot" data-section="about"></div>
+            <div class="dot" data-section="education"></div>
+            <div class="dot" data-section="skills"></div>
+            <div class="dot" data-section="projects"></div>
+            <div class="dot" data-section="experience"></div>
+            <div class="dot" data-section="contact"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content section-content">
+                <div class="about-text">
+                    <p>Hello! I'm Alex Morgan, a passionate Computer Science student at Stanford University with a focus on full-stack development and artificial intelligence. I'm expected to graduate in May 2025 with a Bachelor of Science in Computer Science.</p>
+                    <p>My journey in tech began when I built my first website at 15, and I've been hooked ever since. I thrive on solving complex problems and transforming innovative ideas into functional, user-friendly applications. My goal is to leverage technology to create solutions that make a positive impact on people's lives.</p>
+                    
+                    <h3>Soft Skills</h3>
+                    <div class="skills-list">
+                        <span class="skill-tag">Communication</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Team Leadership</span>
+                        <span class="skill-tag">Time Management</span>
+                        <span class="skill-tag">Adaptability</span>
+                        <span class="skill-tag">Critical Thinking</span>
+                    </div>
+                    
+                    <div class="hobbies">
+                        <h3>Hobbies & Interests</h3>
+                        <p>When I'm not coding, you can find me playing chess, hiking in the mountains, blogging about tech trends, or experimenting with new recipes in the kitchen. I'm also an amateur photographer and enjoy capturing urban landscapes.</p>
+                    </div>
+                    
+                    <a href="#" class="btn">Download Résumé</a>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Coding setup" style="width:100%; border-radius: var(--radius); box-shadow: var(--shadow);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="education-container section-content">
+                <div class="education-item">
+                    <h3>B.S. in Computer Science</h3>
+                    <div class="education-date">2021 - 2025</div>
+                    <div class="education-institution">Stanford University, Stanford, CA</div>
+                    <p>Specializing in Artificial Intelligence and Web Technologies</p>
+                    <div class="course-list">
+                        <h4>Key Coursework:</h4>
+                        <ul>
+                            <li>Machine Learning</li>
+                            <li>Advanced Algorithms</li>
+                            <li>Distributed Systems</li>
+                            <li>Computer Vision</li>
+                            <li>Database Systems</li>
+                            <li>Cloud Computing</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="education-item">
+                    <h3>High School Diploma</h3>
+                    <div class="education-date">2017 - 2021</div>
+                    <div class="education-institution">Tech Magnet High School, San Jose, CA</div>
+                    <p>Graduated with High Honors</p>
+                    <div class="course-list">
+                        <h4>Achievements:</h4>
+                        <ul>
+                            <li>National Merit Scholarship Finalist</li>
+                            <li>1st Place at State Science Fair (AI Category)</li>
+                            <li>President of Computer Science Club</li>
+                            <li>AP Scholar with Distinction</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <!-- Main Content -->
-        <main>
-            <!-- About Section -->
-            <section class="section">
-                <div class="section-header">
-                    <i class="fas fa-user"></i>
-                    <h2>About Me</h2>
-                </div>
-                <div class="about-content">
-                    <p>Hello! I'm Alex Morgan, a passionate Computer Science student at MIT with a focus on artificial intelligence and web development. I'm currently in my junior year and have maintained a 3.9 GPA while actively participating in research projects and coding competitions.</p>
-                    <p>My journey in technology began in high school when I developed my first mobile app, and since then I've been fascinated by how technology can solve real-world problems. I'm particularly interested in machine learning applications for healthcare and education.</p>
-                    <p>When I'm not coding, you can find me hiking, reading sci-fi novels, or mentoring at local coding bootcamps for high school students.</p>
-                </div>
-            </section>
-
-            <!-- Education Section -->
-            <section class="section">
-                <div class="section-header">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h2>Education</h2>
-                </div>
-                <div class="education-content">
-                    <div class="education-item">
-                        <div class="education-icon">
-                            <i class="fas fa-university"></i>
-                        </div>
-                        <div class="education-details">
-                            <h3>Massachusetts Institute of Technology (MIT)</h3>
-                            <span class="date">2021 - Present</span>
-                            <p>Bachelor of Science in Computer Science and Engineering</p>
-                            <p>GPA: 3.92/4.0 | Dean's List all semesters</p>
-                            <p>Relevant Coursework: Algorithms, Machine Learning, Data Structures, Web Development, Computer Vision</p>
-                        </div>
-                    </div>
-                    <div class="education-item">
-                        <div class="education-icon">
-                            <i class="fas fa-school"></i>
-                        </div>
-                        <div class="education-details">
-                            <h3>Westwood High School</h3>
-                            <span class="date">2017 - 2021</span>
-                            <p>High School Diploma | GPA: 4.0/4.0</p>
-                            <p>Activities: President of Coding Club, Captain of Robotics Team, National Honor Society</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Skills Section -->
-            <section class="section">
-                <div class="section-header">
-                    <i class="fas fa-code"></i>
-                    <h2>Skills</h2>
-                </div>
-                <div class="skills-container">
-                    <div class="skill-category">
-                        <h3><i class="fas fa-laptop-code"></i> Technical Skills</h3>
-                        <ul class="skill-list">
-                            <li>
-                                <span class="skill-name">Python</span>
-                                <span class="skill-level">Advanced</span>
-                            </li>
-                            <li>
-                                <span class="skill-name">JavaScript</span>
-                                <span class="skill-level">Advanced</span>
-                            </li>
-                            <li>
-                                <span class="skill-name">Java</span>
-                                <span class="skill-level">Intermediate</span>
-                            </li>
-                            <li>
-                                <span class="skill-name">HTML/CSS</span>
-                                <span class="skill-level">Advanced</span>
-                            </li>
-                            <li>
-                                <span class="skill-name">React</span>
-                                <span class="skill-level">Intermediate</span>
-                            </li>
-                            <li>
-                                <span class="skill-name">SQL</span>
-                                <span class="skill-level">Intermediate</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3><i class="fas fa-brain"></i> Data Science</h3>
-                        <ul class="skill-list">
-                            <li>
-                                <span class="skill-name">Machine Learning</span>
-                                <span class="skill-level">Intermediate</span>
-                            </li>
-                            <li>
-                                <span class="skill-name">TensorFlow</span>
-                                <span class="skill-level">Intermediate</span>
-                            </li>
-                            <li>
-                                <span class="skill-name">Data Visualization</span>
-                                <span class="skill-level">Intermediate</span>
-                            </li>
-                            <li>
-                                <span class="skill-name">Pandas/Numpy</span>
-                                <span class="skill-level">Advanced</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Projects Section -->
-            <section class="section">
-                <div class="section-header">
-                    <i class="fas fa-project-diagram"></i>
-                    <h2>Projects</h2>
-                </div>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <div class="project-image">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>HealthAI - Disease Prediction</h3>
-                            <div class="project-tags">
-                                <span class="tag">Python</span>
-                                <span class="tag">TensorFlow</span>
-                                <span class="tag">Machine Learning</span>
-                            </div>
-                            <p>A machine learning model that predicts potential health risks based on user-inputted health metrics and lifestyle data.</p>
-                            <div class="project-links">
-                                <a href="#"><i class="fab fa-github"></i> View Code</a>
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-image">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <div class="project-content">
-                            <h3>EduConnect Learning Platform</h3>
-                            <div class="project-tags">
-                                <span class="tag">React</span>
-                                <span class="tag">Node.js</span>
-                                <span class="tag">MongoDB</span>
-                            </div>
-                            <p>A web application connecting students with tutors for personalized learning experiences.</p>
-                            <div class="project-links">
-                                <a href="#"><i class="fab fa-github"></i> View Code</a>
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            </div>
-                        </div>
-                    </div>
-  
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section class="section">
-                <div class="section-header">
-                    <i class="fas fa-envelope"></i>
-                    <h2>Contact</h2>
-                </div>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <a href="mailto:alex.m@example.com">alex.m@example.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <p>+1 (617) 555-0123</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>Cambridge, MA, USA</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer>
-            <div class="footer-content">
-                <div class="footer-logo">Sandeep Kumar</div>
-                <div class="footer-links">
-                    <a href="#"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-                    <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="#"><i class="fab fa-medium-m"></i> Blog</a>
-                </div>
-                <p class="copyright">© 2025 Sandeep Kumar. All rights reserved.</p>
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Technical Skills</h2>
             </div>
-        </footer>
-    </div>
+            <div class="skills-container section-content">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <span>Java</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <span>SQL</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <span>CSS3</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Frameworks & Tools</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-docker"></i>
+                            </div>
+                            <span>Docker</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            <span>Git</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <span>Express</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <span>AWS</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Areas of Interest</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <span>Machine Learning</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <span>AI</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <span>Mobile Dev</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Cybersecurity</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-cloud"></i>
+                            </div>
+                            <span>Cloud Computing</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <span>Data Science</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Projects</h2>
+            </div>
+            <div class="projects-container section-content">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="AI Learning Platform" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">AI Learning Platform</h3>
+                        <p>An interactive platform that teaches AI concepts through hands-on projects and visualizations. Features include code execution, progress tracking, and community challenges.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">TensorFlow.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Health Tracker App" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Health Tracker App</h3>
+                        <p>A mobile application that tracks fitness metrics, nutrition, and mental health. Uses machine learning to provide personalized recommendations and insights.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Chart.js</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#"><i class="fab fa-app-store"></i> App Store</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Smart Campus System" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Smart Campus System</h3>
+                        <p>An IoT solution deployed across campus to monitor energy usage, optimize facility management, and improve student engagement through a unified platform.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">AWS IoT</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">Raspberry Pi</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#"><i class="fas fa-external-link-alt"></i> Case Study</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experience</h2>
+            </div>
+            <div class="experience-container section-content">
+                <div class="experience-item">
+                    <div class="experience-date">June 2023 - August 2023</div>
+                    <h3 class="experience-role">Software Engineering Intern</h3>
+                    <div class="experience-company">Google, Mountain View, CA</div>
+                    <p>Worked on the Google Cloud Platform team to enhance data processing pipelines and improve API performance.</p>
+                    <div class="experience-details">
+                        <ul>
+                            <li>Optimized data processing workflows, reducing latency by 15%</li>
+                            <li>Developed new features for Cloud Storage API using Java</li>
+                            <li>Collaborated with UX designers to improve user dashboard</li>
+                            <li>Wrote comprehensive unit tests achieving 95% coverage</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-date">January 2023 - May 2023</div>
+                    <h3 class="experience-role">Research Assistant</h3>
+                    <div class="experience-company">Stanford AI Lab, Stanford, CA</div>
+                    <p>Assisted in research on natural language processing and sentiment analysis under Dr. Emily Chen.</p>
+                    <div class="experience-details">
+                        <ul>
+                            <li>Collected and preprocessed large datasets for model training</li>
+                            <li>Implemented and tested transformer-based models in PyTorch</li>
+                            <li>Co-authored research paper accepted at ACL 2023</li>
+                            <li>Developed visualization tools for model interpretability</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            <div class="contact-container section-content">
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                
+                <div class="contact-info-section">
+                    <h3>Let's Connect!</h3>
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i> alex.morgan@example.com
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i> (123) 456-7890
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i> San Francisco, CA
+                    </div>
+                    
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Alex Morgan. All Rights Reserved.</p>
+            <p>Designed and built with ❤️</p>
+        </div>
+    </footer>
 
     <script>
-        // Simple animations for section elements
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('.section');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, { threshold: 0.1 });
+        // Navigation dots functionality
+        const dots = document.querySelectorAll('.dot');
+        const sections = document.querySelectorAll('section');
+        
+        // Set active dot based on scroll position
+        window.addEventListener('scroll', () => {
+            let current = '';
             
             sections.forEach(section => {
-                section.style.opacity = 0;
-                section.style.transform = 'translateY(20px)';
-                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(section);
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
             });
             
-            // Project card hover effect enhancement
-            const projectCards = document.querySelectorAll('.project-card');
-            projectCards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    const image = card.querySelector('.project-image');
-                    image.style.transform = 'scale(1.05)';
-                    image.style.transition = 'transform 0.5s ease';
-                });
+            dots.forEach(dot => {
+                dot.classList.remove('active');
+                if (dot.dataset.section === current) {
+                    dot.classList.add('active');
+                }
+            });
+        });
+        
+        // Smooth scrolling for dots
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const targetId = this.dataset.section;
+                const targetSection = document.getElementById(targetId);
                 
-                card.addEventListener('mouseleave', () => {
-                    const image = card.querySelector('.project-image');
-                    image.style.transform = 'scale(1)';
+                window.scrollTo({
+                    top: targetSection.offsetTop,
+                    behavior: 'smooth'
                 });
             });
+        });
+        
+        // Form submission prevention
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Form submitted! (This is a demo)');
+        });
+        
+        // Animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.8s ease-out forwards';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        document.querySelectorAll('.section-content').forEach((el) => {
+            observer.observe(el);
         });
     </script>
 </body>
