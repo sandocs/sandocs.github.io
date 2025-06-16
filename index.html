@@ -1,1 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandeep Kumar — Academic Profile</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #7f8c8d;
+            --transition: all 0.3s ease;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: auto;
+            min-height: 0;
+            max-height: none;
+            background: linear-gradient(135deg, var(--primary) 0%, #1a2530 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            z-index: 0;
+            animation: rotate 20s linear infinite;
+        }
+
+     
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin-bottom: 2rem;
+        }
+
+        .profile-gradient {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            background: linear-gradient(135deg, #3498db, #8e44ad, #e74c3c);
+            border-radius: 50%;
+            z-index: 0;
+            animation: gradientRotate 7s linear infinite;
+        }
+
+        @keyframes gradientRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .profile-img {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            z-index: 1;
+            border: 1px solid white;
+            box-shadow: var(--shadow);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            font-weight: 400;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 0rem;
+            animation: fadeIn 1.4s ease-out;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.67rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(1px);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            background: black;
+            transform: translateY(-3px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            animation: fadeIn 1.6s ease-out;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: black;
+            font-size: 1.5rem;
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Navigation Dots */
+      
+
+        /* Section Styling */
+        section {
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: black;
+            text-align: justify;
+        }
+
+        .hobbies {
+            text-align: justify;
+            color: #3498db;
+        }
+
+        .btn {
+            display: block;
+            background-color: black;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            
+            border: 1px solid white;
+            cursor: pointer;
+            margin: 1rem auto 0 auto;
+            
+            width: fit-content;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateX(0px);
+            color: white;
+            border: 1px solid white;
+        }
+
+        /* Education Section */
+        .education-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .education-item {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-item h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .course-list {
+            margin-top: 1rem;
+        }
+
+        .course-list li {
+            margin-bottom: 0.5rem;
+            color: black;
+            position: relative;
+            padding-left: 0px;
+        }
+
+        
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+    
+            .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .skill-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .skill-item:hover .skill-icon {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        /* Projects Section */
+        .projects-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+    
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        
+
+        .project-content {
+            padding: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background-color: var(--light);
+            color: var(--secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .tech-tag:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-links a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .project-links a:hover {
+            color: #c0392b;
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-info-section .social-icons {
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-content {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+
+            .tagline {
+                font-size: 1.8rem;
+            }
+
+            
+            .education-container,
+            .skills-container,
+            .projects-container,
+            .experience-container,
+            .contact-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .skills-container {
+                grid-template-columns: repeat(2, 2fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .projects-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-container {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-container">
+                    <div class="profile-gradient"></div>
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi_0XZOAeeJHbGvrjNKjGqK4kYPpYVnlUocE-USVwZlbX1yB4rOkfuhQVe1QfVrmzERrMjfgQmJKRnIYs9o_DeA8PrK5nl5QeL50bQNRkurgN1yicmLcQWnCP7iOJ0l8Wl7AVd--YhHAjN4N9lTWVptJiA2ni4cj3s5kznI__oEoFv8OsurzeINa4qAvwQ" alt="Sandeep Kumar" class="profile-img">
+                </div>
+                <h1>Sandeep Kumar</h1>
+                <div class="tagline">Computer Science UG Student</div>
+                <div class="contact-info">
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-graduation-cap"></i>Shershah College of Engineering, Sasaram [IN]
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Dots -->
+       
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content section-content">
+                <div class="about-text">
+                    <p>Hello! I'm Sandeep Kumar, a passionate Computer Science UG student at Shershah Engineering College, with a focus on full-stack development and machine learning, particularly from a research oriented perspective. </p>
+                    <p>I'm actively seeking opportunities that allow me to combine my analytical skills with my creative side, whether that's through academic research, technical communication, or collaborative software projects. My goal is to leverage technology to create solutions that make a positive impact on people's lives.<br><br>Assistant of Sr. Developer Mr. Braj.</></p>
+
+                    
+
+                    <div class="hobbies">
+                        <h3>Hobbies & Interests</h3>
+                        <p>When I'm not coding, you can find me playing chess, hiking in the mountains, blogging about tech trends, or analyzing research papers from credible sources. I'm also a video editor and enjoy to blend tech and creativity to produce impactful content.<br>&nbsp;</p>
+                    </div>
+
+                    <a href="https://sandocs.medium.com/" class="btn"><i class="fab fa-medium"></i>&nbsp;&nbsp;Read my Blog</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="education-container section-content">
+                <div class="education-item">
+                    <h3>B.Tech in Computer Science</h3>
+                    <div class="education-date">2024 - 2028</div>
+                    <div class="education-institution"><b>Shershah Engineering College<br>Sasaram, Bihar [821113]</b></div>
+                    <p>Affilated to BEU, Patna</p>
+                    <div class="course-list">
+                        <h4>Key Coursework :</h4>
+                        <div>
+                            <li>Web Development</li>
+                            <li>Data Structures & Algorithms</li>
+                            <li>Database Management Systems</li>
+                            <li>AI & ML</li>
+                            <li>Blockchain & Cryptocurrency</li>
+                            <li>Cloud Computing</li>
+                            <li>E-Commerce Operations</li>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <h3>Secondary & Senior Secondary</h3>
+                    <div class="education-date">2019 - 2023</div>
+                    <div class="education-institution"><b>Baldev Senior Secondary School<br>Dinara, Rohtas [802213]</b></div>
+                    <p>Affilated to BSEB, Patna</p>
+                    <div class="course-list">
+                        <h4>Achievements :</h4>
+                        <div>
+                            <li>1st Rank in Bihar<br></>(BSEB Matric/Secondary Exam 2021)</li>
+                            <li>Selected for admission in BHU<br>(CHS Entrance Exam 2021)</li>
+                            <li>1st Rank in Rohtas<br>(Navoday Entrance Exam 2019)</li>
+                            <li>70th Rank in Bihar<br>(Tallentex 2019 by ALLEN, Kota)</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills</h2>
+            </div>
+            <div class="skills-container section-content">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-js"></i>
+                            </div>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <span>CSS3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Frameworks & Tools</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <span>Github</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-terminal"></i>
+                            </div>
+                            <span>VS Code</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-figma"></i>
+                            </div>
+                            <span>Figma</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="ai ai-overleaf ai"></i>
+                            </div>
+                            <span>Overleaf</span>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Areas of Interest</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <span>AI & ML</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <span>WebDev</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <span>Mobile Dev</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <span>Cyber Security</span>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>ExtraCurriculars</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-scissors"></i>
+                            </div>
+                            <span>Video Editing</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-pencil"></i>
+                            </div>
+                            <span>Content Writing</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-chess-knight"></i>
+                            </div>
+                            <span>Chess</span>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <span>Statistics</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Future Projects</h2>
+            </div>
+            <div class="projects-container section-content">
+                <div class="project-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQEIkRNFvKIHgwA8kHLcz0_KqL7nYrLAAJ2syq89KEPnpBGbk4_5BiI94&s=10" alt="AI Learning Platform" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">YouTube Playlist Downloader</h3>
+                        <p>An interactive platform that helps users to download complete YouTube playlist into local storage. Some additional features like playlist length, average video duration will also be added.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">APIs</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/sandocs/playlist-downloader"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://sandocs.github.io/playlist-downloader.html"><i class="fas fa-external-link-alt"></i> Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGH6L0Fk9X2ozW1Ny0evy4RfXKGtngdc6qtA&usqp=CAU" alt="Health Tracker App" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">BEU Students' e-Library</h3>
+                        <p>A web application made exclusively for Bihar Engineering University students, that provides Notes PDFs, AICTE preferred Textbooks PDFs, Organised YouTube Playlists and more. </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">pdf.js</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">AWS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/sandocs/beu-library"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://sandocs.github.io/beu-library.html"><i class="fas fa-external-link-alt"></i> Visit Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    
+    <!-- Contact Section -->
+    <section id="contact" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            
+
+                <div class="contact-info-section">
+                    <h3>Let's Connect!</h3>
+                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to collaborate on your projects.</p>
+
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/sandocs"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:sandeepkbiru@gmail.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://github.com/sandocs"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/sandeep.biru"><i class="fab fa-instagram"></i></a>
+                        <a href="https://sandocs.medium.com"><i class="fab fa-medium"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Sandeep Kumar. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+                               
